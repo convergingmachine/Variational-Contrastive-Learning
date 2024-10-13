@@ -1,38 +1,73 @@
-# ImageNet ResNet50
+Certainly! Here is the raw text for the README.md file:
 
-Reference implementations for self-supervised learning (SSL) methods on ImageNet with
-ResNet50 backbones.
-
-**Note**
-> The benchmarks are still in beta phase and there will be breaking changes and
-frequent updates. PRs for new methods are highly welcome!
-
-**Goals**
-* Provide easy to use/adapt reference implementations of SSL methods.
-* Implemented methods should be self-contained and use the Lightly building blocks.
-See [simclr.py](simclr.py).
-* Remain as framework agnostic as possible. The benchmarks currently only rely on PyTorch and PyTorch Lightning.
-
-
-**Non-Goals**
-* Lightly doesn't strive to be an end-to-end SSL framework with vast configuration options.
-Instead, we try to provide building blocks and examples to make it as easy as possible to
-build on top of existing SSL methods.
-
-You can find benchmark resuls in our [docs](https://docs.lightly.ai/self-supervised-learning/getting_started/benchmarks.html).
-
-## Run Benchmark
-
-To run the benchmark first download the ImageNet ILSVRC2012 split from here: https://www.image-net.org/challenges/LSVRC/2012/.
-
-
-Then start the benchmark with:
 ```
+# Variational Contrastive Learning
+
+Welcome to the Variational Contrastive Learning repository! This project provides tools and scripts to run benchmarks on the ImageNet ILSVRC2012 dataset using various contrastive learning methods. Below, you'll find instructions for setting up the environment, running benchmarks, and configuring experiments.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Dataset Preparation](#dataset-preparation)
+- [Running Benchmarks](#running-benchmarks)
+  - [Local Execution](#local-execution)
+  - [SLURM Execution](#slurm-execution)
+- [Configuration Options](#configuration-options)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+To get started, you'll need to set up your environment. We recommend using Conda for managing dependencies.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/variational-contrastive-learning.git
+   cd variational-contrastive-learning
+   ```
+
+2. Create and activate a Conda environment:
+   ```bash
+   conda create --name lightly-env python=3.8
+   conda activate lightly-env
+   ```
+
+3. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Dataset Preparation
+
+To run the benchmark, you need to download the ImageNet ILSVRC2012 dataset. You can obtain it from the official website:
+
+[Download ImageNet ILSVRC2012](https://www.image-net.org/challenges/LSVRC/2012/)
+
+Place the dataset in your desired directory structure:
+
+```
+/datasets/imagenet/
+    ├── train/
+    └── val/
+```
+
+## Running Benchmarks
+
+You can run benchmarks either locally or using a SLURM cluster.
+
+### Local Execution
+
+To run the benchmark locally, use the following command:
+
+```bash
 python main.py --epochs 100 --train-dir /datasets/imagenet/train --val-dir /datasets/imagenet/val --num-workers 12 --devices 2 --batch-size-per-device 128 --skip-finetune-eval
 ```
 
-Or with SLURM, create the following script (`run_imagenet.sh`):
-```
+### SLURM Execution
+
+For execution on a SLURM cluster, create a script named `run_imagenet.sh` with the following content:
+
+```bash
 #!/bin/bash
 
 #SBATCH --nodes=1
@@ -48,21 +83,39 @@ srun python main.py --epochs 100 --train-dir /datasets/imagenet/train --val-dir 
 conda deactivate
 ```
 
-And run it with sbatch: `sbatch run_imagenet.sh`.
+Submit the job with:
 
-
-## Configuration
-
-To run the benchmark on specific methods use the `--methods` flag:
-```
-python main.py --epochs 100 --batch-size-per-device 128 --methods simclr byol
+```bash
+sbatch run_imagenet.sh
 ```
 
-Training/evaluation steps can be skipped as follows:
-```
-python main.py --batch-size-per-device 128 \
-    --epochs 0              # no pretraining
-    --skip-knn-eval         # no KNN evaluation
-    --skip-linear-eval      # no linear evaluation
-    --skip-finetune-eval    # no finetune evaluation
+## Configuration Options
+
+You can customize your experiments using various command-line arguments:
+
+- **Specify Methods**: Use the `--methods` flag to choose specific contrastive learning methods.
+  ```bash
+  python main.py --epochs 100 --batch-size-per-device 128 --methods simclr byol
+  ```
+
+- **Skip Training/Evaluation Steps**: You can skip certain steps to save time.
+  ```bash
+  python main.py --batch-size-per-device 128 \
+      --epochs 0              # no pretraining
+      --skip-knn-eval         # no KNN evaluation
+      --skip-linear-eval      # no linear evaluation
+      --skip-finetune-eval    # no finetune evaluation
+  ```
+
+## Contributing
+
+We welcome contributions to improve this project! Please feel free to submit issues or pull requests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+---
+
+Thank you for using Variational Contrastive Learning! We hope this tool helps advance your research and projects in machine learning. If you have any questions or feedback, please don't hesitate to reach out.
 ```
