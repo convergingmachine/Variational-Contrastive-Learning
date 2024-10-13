@@ -10,8 +10,6 @@ Welcome to the Variational Contrastive Learning repository! This project provide
 - Finetune: [SimCLR](https://arxiv.org/abs/2002.05709)
 - KNN: [InstDisc](https://arxiv.org/abs/1805.01978)
 
-See the [benchmarking scripts](./benchmarks/imagenet/resnet50/) for details.
-
 | Model           | Backbone | Batch Size | Epochs | Linear Top1 | Finetune Top1 | kNN Top1 | Checkpoint                                                                                                                                                              |
 | --------------- | -------- | ---------- | ------ | ----------- | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | BarlowTwins     | Res50    | 256        | 100    | 62.9        | 72.6          | 45.6     | [link](https://lightly-ssl-checkpoints.s3.amazonaws.com/imagenet_resnet50_barlowtwins_2023-08-18_00-11-03/pretrain/version_0/checkpoints/epoch%3D99-step%3D500400.ckpt) |
