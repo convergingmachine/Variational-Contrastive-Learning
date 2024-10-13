@@ -23,7 +23,7 @@ Welcome to the Variational Contrastive Learning repository! This project provide
 | SwAV            | Res50    | 256        | 100    | 67.2        | 75.4          | 49.5     | [link](https://lightly-ssl-checkpoints.s3.amazonaws.com/imagenet_resnet50_swav_2023-05-25_08-29-14/pretrain/version_0/checkpoints/epoch%3D99-step%3D500400.ckpt)        |
 | TiCo            | Res50    | 256        | 100    | 49.7        | 72.7          | 26.6     | [link](https://lightly-ssl-checkpoints.s3.amazonaws.com/imagenet_resnet50_tico_2024-01-07_18-40-57/pretrain/version_0/checkpoints/epoch%3D99-step%3D250200.ckpt)        |
 | VICReg          | Res50    | 256        | 100    | 63.0        | 73.7          | 46.3     | [link](https://lightly-ssl-checkpoints.s3.amazonaws.com/imagenet_resnet50_vicreg_2023-09-11_10-53-08/pretrain/version_0/checkpoints/epoch%3D99-step%3D500400.ckpt)      |
-| VCL (ours)      | Res50    | 256        | 100    | -           | -             | 41.2     | [link](https://huggingface.co/ogrenenmakine/vcl/resolve/main/vcl_e100.ckpt)      |
+| VCL (ours)      | Res50    | 256        | 100    | 61.1        | -             | 41.2     | [link](https://huggingface.co/ogrenenmakine/vcl/resolve/main/vcl_e100.ckpt)      |
 
 _\*We use square root learning rate scaling instead of linear scaling as it yields
 
