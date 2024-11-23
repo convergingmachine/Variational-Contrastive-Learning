@@ -46,7 +46,7 @@ class VCL(LightningModule):
         logVarm = torch.log(sigma2m)
         
         # Compute the first term: -0.5 * (log(sigma_i) - log(sigma_j))
-        log_diffs = (logVarm - logVar0) + 2 * (logVarm - logVar1) 
+        log_diffs = (logVarm - logVar0) + (logVarm - logVar1) 
         term1 = 0.5 * log_diffs
         
         # Compute the second term: 0.25 * ((mu_i - mu_m)^2 + (mu_j - mu_m)^2) / sigma_m^2
