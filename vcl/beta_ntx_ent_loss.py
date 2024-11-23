@@ -3,33 +3,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-class vloss(nn.Module):
-    def __init__(self):
-        super(vloss,self).__init__()
-
-    def l1(self, x, y):
-        return x - y
-
-    def l2(self, x, y):
-        return (x - y).square()
-
-    def forward(self, mu, logVar):
-        mp = mu[:,0,:]
-        mq = mu[:,1,:]
-        mm = 0.5 * (mp + mq)
-        
-        lVp = logVar[:,0,:]
-        lVq = logVar[:,1,:]        
-        vm = 0.5 * (lVp.exp() + lVq.exp())
-        lVm = vm.log()
-        
-        ft = - self.l1(lVp, lVm) - self.l1(lVq, lVm)
-        st = (self.l2(mp,mm) + self.l2(mq,mm)) / (2 * vm)
-        
-        eq_ = 0.5 * (ft + st).mean()
-        norm_ = - 0.5 * (1 + logVar - mu.pow(2) - logVar.exp()).mean()
-        return eq_ + norm_
-
 class betaNTXentLoss(torch.nn.Module):
     def __init__(self, beta, temperature):
         super(betaNTXentLoss, self).__init__()
