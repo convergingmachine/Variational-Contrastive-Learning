@@ -12,8 +12,8 @@ Welcome to the Variational Contrastive Learning repository! This project provide
 
 | Model           | Backbone | Batch Size | Epochs | Linear Top1 | Finetune Top1 | kNN Top1 | Checkpoint                                                                                                                                                              |
 | --------------- | -------- | ---------- | ------ | ----------- | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| VCL - beta div. (ours)      | Res50    | 256        | 100    | -        | -             | -     | [link](https://huggingface.co/ogrenenmakine/vcl/resolve/main/beta_vcl_e100.ckpt)      | 
-| VCL (ours)      | Res50    | 256        | 100    | 61.1        | -             | 41.2     | [link](https://huggingface.co/ogrenenmakine/vcl/resolve/main/vcl_e100.ckpt)      | 
+| VCL - beta div.  | Res50    | 256        | 100    | -        | -             | -     | [link](https://huggingface.co/ogrenenmakine/vcl/resolve/main/beta_vcl_e100.ckpt)      | 
+| VCL      | Res50    | 256        | 100    | 61.1        | -             | 41.2     | [link](https://huggingface.co/ogrenenmakine/vcl/resolve/main/vcl_e100.ckpt)      | 
 | _Other SSLs_ |
 | BarlowTwins     | Res50    | 256        | 100    | 62.9        | 72.6          | 45.6     | [link](https://lightly-ssl-checkpoints.s3.amazonaws.com/imagenet_resnet50_barlowtwins_2023-08-18_00-11-03/pretrain/version_0/checkpoints/epoch%3D99-step%3D500400.ckpt) |
 | BYOL            | Res50    | 256        | 100    | 62.5        | 74.5          | 46.0     | [link](https://lightly-ssl-checkpoints.s3.amazonaws.com/imagenet_resnet50_byol_2024-02-14_16-10-09/pretrain/version_0/checkpoints/epoch%3D99-step%3D500400.ckpt)        |
