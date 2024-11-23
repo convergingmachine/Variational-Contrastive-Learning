@@ -8,6 +8,7 @@ from torch.nn import Identity
 from torchvision.models import resnet50
 
 from lightly.loss.ntx_ent_loss import NTXentLoss
+from vcl.beta_ntx_ent_loss import betaNTXentLoss
 from vcl.proj_head import VCLProjectionHead
 from lightly.models.utils import get_weight_decay_parameters
 from lightly.utils.benchmarking import OnlineLinearClassifier
@@ -25,8 +26,8 @@ class VCL(LightningModule):
         resnet.fc = Identity()  # Ignore classification head
         self.backbone = resnet
         self.projection_head = VCLProjectionHead()
-        self.criterion = NTXentLoss(temperature=temperature, gather_distributed=True)
-
+        self.criterion = betaNTXentLoss(beta=0.005, temperature=0.07) #NTXentLoss(temperature=temperature, gather_distributed=True)
+        
         self.online_classifier = OnlineLinearClassifier(num_classes=num_classes)
 
     def compute_m_params(self, mu_i, mu_j, sigma2_i, sigma2_j):
